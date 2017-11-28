@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Example</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    </head>
+    <body>
+        <div>Subir un archivo excel</div>
+        <form action="/WebApplication1/subirExcel" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" />
+        </form>
+        
+        
+        <div>Crear contacto</div>
+        <input type="text" id="nombre" value="" />
+        <input type="text" id="telefono" value=""/>
+
+        <button type="button" id="crear" >Crear</button>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript" >
+            $(document).ready(function () {
+                $("#crear").click(function () {
+                    $.get("/WebApplication1/crear?nombre=" + $("#nombre").val() + "&telefono=" + $("#telefono").val(),
+                            function (data, status) {
+                                alert("Data: " + data + "\nStatus: " + status);
+                            });
+                });
+
+
+            });
+
+        </script>
+
+    </body>
+</html>
